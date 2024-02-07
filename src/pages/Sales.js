@@ -73,7 +73,7 @@ const Sales = () => {
     {
       field: 'Actions',
       renderCell: (params) => (
-        <Stack direction="row" spacing={2}>
+        <Stack direction="row" spacing={3}>
           <IconButton onClick={() => handleEdit(params.row)}>
             <EditIcon sx={{ color: 'orange' }} />
           </IconButton>

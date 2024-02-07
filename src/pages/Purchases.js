@@ -41,7 +41,7 @@ const Purchases = () => {
     dispatch(getProducts())
     dispatch(getPurchases())
     dispatch(getFirms())
-  }, [])
+  }, [dispatch])
 
   const handleEdit = (sale) => {
     setEdit(true)

@@ -12,12 +12,12 @@ import Layout from './components/Layout/Layout'
 import PrivateRouter from '../src/PrivateRouter'
 import Dashboard from './pages/Dashboard'
 import Purchases from './pages/Purchases'
-//import { geocode } from './Geocode'
 
+  
 const App = () => {
  //const getGeocode = async () => {
-  //const { lat, lng } = await geocode(
-    //'1775 Tysons Blvd 5th Floor, Tysons, VA 22102, United States'
+  //const { lat, lng } = await Geocode(
+   // '1775 Tysons Blvd 5th Floor, Tysons, VA 22102, United States'
   //)
  //}
   //getGeocode()

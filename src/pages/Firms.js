@@ -8,7 +8,7 @@ import {
     ToggleButtonGroup,
     Typography,
   } from '@mui/material'
-  import { useEffect, useState } from 'react'
+  import { useEffect, useState,} from 'react'
   import { useDispatch, useSelector } from 'react-redux'
   import { deleteFirm, getFirms } from '../store/firms'
   import StyledCard from '../components/StyledCard'
@@ -18,13 +18,15 @@ import {
   import MapIcon from '@mui/icons-material/Map'
   import MapView from '../components/MapView'
   import { geocode } from '../Geocode'
-  
+
   const Firms = () => {
     const [open, setOpen] = useState(false)
     const [edit, setEdit] = useState(false)
     const [view, setView] = useState('card')
     const [selected, setSelected] = useState(null)
-  
+    
+
+
     const closeModal = () => {
       setOpen(false)
       setEdit(false)
@@ -33,13 +35,15 @@ import {
     const openModal = () => {
       setOpen(true)
     }
+
+    
   
     const dispatch = useDispatch()
-    const firms = useSelector((state) => state.firm.data)
+    const firms = useSelector((state) => state.firms.data)
   
     useEffect(() => {
       dispatch(getFirms())
-    }, [])
+    }, [dispatch])
   
     const [lat, setLat] = useState(38.92)
     const [lng, setLng] = useState(-77.22)
@@ -51,16 +55,16 @@ import {
   
     useEffect(() => {
       if (firms?.[selected]?.address) getGeocode(firms[selected].address)
-    }, [selected])
+    }, [firms, selected])
   
     const handleDelete = (id) => {
       dispatch(deleteFirm(id))
     }
   
-    const handleEdit = (firm) => {
+    const handleEdit = (Firms) => {
       setEdit(true)
       setOpen(true)
-      dispatch(uiActions.setModalData(firm))
+      dispatch(uiActions.setModalData(Firms))
     }
   
     return (
@@ -70,7 +74,7 @@ import {
             Firms
           </Typography>
           <Button variant="contained" onClick={() => openModal()}>
-            New Firm
+            New Firms
           </Button>
         </Stack>
   
@@ -82,7 +86,7 @@ import {
               exclusive
               onChange={(e, newView) => setView(newView)}
               sx={{ bgColor: 'white' }}
-              sixe="small"
+              size="small"
             >
               <ToggleButton value="card">
                 <ViewCarouselIcon />
@@ -95,20 +99,20 @@ import {
   
           {view === 'card' && (
             <Grid container spacing={2}>
-              {firms.map((firm) => (
+              {firms.map((firms) => (
                 <Grid
                   item
                   xs={12}
                   md={6}
                   lg={4}
                   xl={3}
-                  key={firm.id}
+                  key={firms.id}
                   onClick={() => {
-                    setSelected(firm.id)
+                    setSelected(firms.id)
                   }}
                 >
                   <StyledCard
-                    item={firm}
+                    item={firms}
                     onDelete={handleDelete}
                     onEdit={handleEdit}
                     selected={selected}
@@ -126,4 +130,4 @@ import {
     )
   }
   
-  export default Firms
+  export default Firms;

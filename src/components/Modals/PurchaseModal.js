@@ -28,16 +28,16 @@ const PurchaseModal = ({ open, closeModal, edit }) => {
         dispatch(getBrands())
         dispatch(getProducts())
         dispatch(getFirms())
-    }, [])
+    }, [dispatch]);
     
     const brands = useSelector((state) => state.brands.data)
     const products =useSelector ((state) => state.products.data)
-    const firms = useSelector ((state) => state.firm.data)
+    const firms = useSelector ((state) => state.firms.data)
     const modalData = useSelector((state) => state.ui.modalDaata)
 
     const initialValues = edit 
     ? modalData
-    : { brand_id: '', product_id: '', firm_id: '', quantity: '',price: '' }
+    : { brand_id: '', product_id: '', firms_id: '', quantity: '',price: '' }
 
     const handleSubmit = (values, actions) => {
         actions.setSubmitting(false)
@@ -61,11 +61,11 @@ const PurchaseModal = ({ open, closeModal, edit }) => {
                     <Formik initialValues={initialValues} onSubmit={handleSubmit}>
                         <Form>
                             <FormControl sx={{ width: '100%', mb: 2 }}>
-                                <InputLabel>Firm</InputLabel>
-                                <Field as={Select} name='firm_id' label="Firm" required>
-                                    {firms.map((firm) => (
-                                        <MenuItem key={firm.id} value={firm.id}>
-                                            {firm.name}
+                                <InputLabel>Firms</InputLabel>
+                                <Field as={Select} name='firms_id' label="Firms" required>
+                                    {firms.map((firms) => (
+                                        <MenuItem key={firms.id} value={firms.id}>
+                                            {firms.name}
                                         </MenuItem>
                                     ))}
                                 </Field>
