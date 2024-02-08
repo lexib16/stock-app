@@ -10,9 +10,9 @@ import {
   } from '@mui/material'
   import { useEffect, useState,} from 'react'
   import { useDispatch, useSelector } from 'react-redux'
-  import { deleteFirm, getFirms } from '../store/firms'
+  import {  deleteFirms, getFirms } from '../store/firms'
   import StyledCard from '../components/StyledCard'
-  import FirmModal from '../components/Modals/FirmModal'
+  import FirmModal from '../components/Modals/FirmsModal'
   import { uiActions } from '../store/ui'
   import ViewCarouselIcon from '@mui/icons-material/ViewCarousel'
   import MapIcon from '@mui/icons-material/Map'
@@ -58,7 +58,7 @@ import {
     }, [firms, selected])
   
     const handleDelete = (id) => {
-      dispatch(deleteFirm(id))
+      dispatch(deleteFirms(id))
     }
   
     const handleEdit = (Firms) => {

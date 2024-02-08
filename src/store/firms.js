@@ -17,13 +17,13 @@ const firmSlice = createSlice({
     getFirms(state, action) {
       state.data = action.payload
     },
-    createFirm(state, action) {
+    createFirms(state, action) {
       state.data.push(action.payload)
     },
-    deleteFirm(state, action) {
+    deleteFirms(state, action) {
       state.data = state.data.filter((c) => c.id !== action.payload)
     },
-    editFirm(state, action) {
+    editFirms(state, action) {
       let index = state.data.findIndex((c) => c.id === action.payload.id)
       state.data[index] = action.payload
     },
@@ -47,18 +47,18 @@ export const getFirms = () => {
   }
 }
 
-export const createFirm = (firm) => {
+export const createFirms = (firms) => {
   return async (dispatch) => {
     try {
       const res = await axios(`${url}/stock/firms/`, {
         method: 'POST',
         'Content-Type': 'application/json',
-        data: firm,
+        data: firms,
         headers: { Authorization: `Token ${token}` },
       })
       if (res.status === 201) {
         toast.success('Firm created successfully!')
-        dispatch(firmSlice.actions.createFirm(res.data))
+        dispatch(firmSlice.actions.createFirms(res.data))
       }
     } catch (err) {
       console.log(err.response.data.detail)
@@ -66,7 +66,7 @@ export const createFirm = (firm) => {
   }
 }
 
-export const deleteFirm = (id) => {
+export const deleteFirms = (id) => {
   return async (dispatch) => {
     try {
       const res = await axios(`${url}/stock/firms/${id}`, {
@@ -76,7 +76,7 @@ export const deleteFirm = (id) => {
       })
       if (res.status === 204) {
         toast.success('Firm successfully deleted')
-        dispatch(firmSlice.actions.deleteFirm(id))
+        dispatch(firmSlice.actions.deleteFirms(id))
       }
     } catch (err) {
       console.log(err.response.data.detail)
@@ -84,10 +84,10 @@ export const deleteFirm = (id) => {
   }
 }
 
-export const editFirm = (firm) => {
+export const editFirm = (firms) => {
   return async (dispatch) => {
     try {
-      const res = await axios(`${url}/stock/firms/${firm.id}/`, {
+      const res = await axios(`${url}/stock/firms/${firms.id}/`, {
         method: 'PUT',
         'Content-Type': 'application/json',
         headers: { Authorization: `Token ${token}` },
@@ -95,7 +95,7 @@ export const editFirm = (firm) => {
       })
       if (res.status === 200) {
         toast.success('Firm successfully updated!')
-        dispatch(firmSlice.actions.editFirm(firm))
+        dispatch(firmSlice.actions.editFirms(firms))
       }
     } catch (err) {
       console.log(err)

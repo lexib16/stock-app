@@ -75,7 +75,7 @@ import {
   
         renderCell: (params) => {
           return (
-            <Stack direction="row" spacing={2}>
+            <Stack direction="row" spacing={3}>
               <IconButton onClick={() => handleEdit(params.row)}>
                 <EditIcon sx={{ color: 'orange' }} />
               </IconButton>
@@ -90,7 +90,7 @@ import {
   
     return (
       <Box>
-        <Stack direction="row" justifyContent="space-between" p={5}>
+        <Stack direction="row" justifyContent="space-between" p={1}>
           <Typography variant="h5" component="h1" color="inherit" noWrap>
             Products
           </Typography>

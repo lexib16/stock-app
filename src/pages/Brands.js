@@ -23,7 +23,7 @@ const Brands = () => {
 
   useEffect(() => {
     dispatch(getBrands())
-  }, [])
+  }, [dispatch])
 
   const handleDelete = (id) => {
     dispatch(deleteBrand(id))

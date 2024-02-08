@@ -3,9 +3,10 @@ import style from '../../styles/modal'
 import { Field, Form, Formik } from 'formik'
 import { useDispatch, useSelector } from 'react-redux'
 import { uiActions } from '../../store/ui'
-import { createFirm, editFirm } from '../../store/firms'
+import { createFirms,editFirm} from '../../store/firms'
 
-const FirmModal = ({ open, closeModal, edit }) => {
+
+const FirmsModal = ({ open, closeModal, edit }) => {
   const dispatch = useDispatch()
 
   let modalData = useSelector((state) => state.ui.modalData)
@@ -17,8 +18,8 @@ const FirmModal = ({ open, closeModal, edit }) => {
   const handleSubmit = (values, actions) => {
     actions.setSubmitting(false)
     if (edit) dispatch(editFirm(values))
-    else dispatch(createFirm(values))
-    actions.resetForm()
+    else dispatch(createFirms(values))
+    actions.resetForms()
     closeModal()
   }
 
@@ -38,7 +39,7 @@ const FirmModal = ({ open, closeModal, edit }) => {
                 type="text"
                 name="name"
                 variant="outlined"
-                label="Firm Name"
+                label="Firms Name"
                 required
                 fullWidth
                 sx={{ mb: 2 }}
@@ -68,7 +69,7 @@ const FirmModal = ({ open, closeModal, edit }) => {
                 type="text"
                 name="address"
                 variant="outlined"
-                label="Firm Address"
+                label="Firms Address"
                 required
                 fullWidth
                 sx={{ mb: 2 }}
@@ -96,4 +97,4 @@ const FirmModal = ({ open, closeModal, edit }) => {
   )
 }
 
-export default FirmModal
+export default FirmsModal

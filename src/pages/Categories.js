@@ -33,7 +33,7 @@ import {
   
     useEffect(() => {
       dispatch(getCategories())
-    }, [])
+    }, [dispatch])
   
     const handleEdit = (category) => {
       setEdit(true)

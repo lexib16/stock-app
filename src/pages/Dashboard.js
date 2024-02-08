@@ -30,7 +30,7 @@ const Dashboard = () => {
   useEffect(() => {
     dispatch(getSales())
     dispatch(getPurchases())
-  }, [])
+  }, [dispatch])
 
   const purchasesCount = purchases.map((p) => parseFloat(p.price_total))
   const purchasesTotal = purchasesCount.reduce((sum, num) => sum + num, 0)
@@ -180,7 +180,7 @@ const Dashboard = () => {
                   <TableRow>
                     <TableCell align="center">#</TableCell>
                     <TableCell align="center">Product</TableCell>
-                    <TableCell align="center">Firm</TableCell>
+                    <TableCell align="center">Firms</TableCell>
                     <TableCell align="center">Brand</TableCell>
                     <TableCell align="center">Category</TableCell>
                     <TableCell align="center">Price</TableCell>
@@ -202,7 +202,7 @@ const Dashboard = () => {
                       >
                         <TableCell align="center">{index + 1}</TableCell>
                         <TableCell align="center">{row.product}</TableCell>
-                        <TableCell align="center">{row.firm}</TableCell>
+                        <TableCell align="center">{row.firms}</TableCell>
                         <TableCell align="center">{row.brand}</TableCell>
                         <TableCell align="center">
                           {row.category[0].name}

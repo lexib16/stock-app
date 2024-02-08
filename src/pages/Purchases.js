@@ -52,7 +52,7 @@ const Purchases = () => {
       product_id: products.find((p) => p.name === sale.product).id,
       quantity: sale.quantity,
       price: sale.price,
-      firm_id: firms.find((f) => f.name === sale.firm).id,
+      firms_id: firms.find((f) => f.name === sale.firms).id,
       id: sale.id,
     }
 
@@ -67,7 +67,7 @@ const Purchases = () => {
     { field: 'id', width: 50, headerClass: 'hidden-header' },
     { field: 'no', headerName: '#', width: 50 },
     { field: 'product', headerName: 'Product', width: 120 },
-    { field: 'firm', headerName: 'Firm', width: 120 },
+    { field: 'firms', headerName: 'Firms', width: 120 },
     { field: 'brand', headerName: 'Brand', width: 120 },
     { field: 'category', headerName: 'Category', width: 120 },
     { field: 'quantity', headerName: 'Quantity', width: 120 },
@@ -94,7 +94,7 @@ const Purchases = () => {
     id: purchases.id,
     no: index + 1,
     product: purchase.product,
-    firm: purchase.firm,
+    firms: purchase.firms,
     brand: purchase.brand,
     category: purchase?.category[0]?.name,
     price: purchase.price,
